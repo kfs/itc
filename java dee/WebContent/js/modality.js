@@ -1,4 +1,16 @@
-(function startUp() {
+(function (){
+	var Modality = new function () {
+		
+	};
+	var ModalForm = new function() {
+		
+	};
+	ModalForm.prototype.inputFields = {};
+	ModalForm.prototype.textareaFields = {};
+	Modality.prototype.createModal = function(id, type) {
+		return new ModalForm(id, type);
+	};
+	
 	
 }) (window);
     

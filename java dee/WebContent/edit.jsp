@@ -7,6 +7,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
     <script type="text/javascript" src="js/modality.js"></script>
+    <script type="text/javascript">
+        Modality.createModal("phone-list-container", "input")
+    </script>
 </head>
 <body>
 <div id="modal-background" style="display: none; height: 0px; width: 0px;"></div>

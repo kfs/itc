@@ -9,10 +9,12 @@ public interface PhoneRecordDAO {
 
     void create(PhoneRecord record);
     
-    List<PhoneRecord> getRecords();
+    PhoneRecord getRecord(String email);
+    
+    List<PhoneRecord> getRecords(int first, int last);
     
     void update(PhoneRecord record);
     
-    void delete(PhoneRecord record);
+    void delete(String email);
     
 }

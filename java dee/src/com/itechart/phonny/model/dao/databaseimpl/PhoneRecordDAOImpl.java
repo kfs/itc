@@ -17,19 +17,29 @@ import com.itechart.phonny.model.entity.Workplace;
 
 public class PhoneRecordDAOImpl implements PhoneRecordDAO {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(PhoneRecordDAOImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhoneRecordDAOImpl.class);
 	
-	private static final String GET_RECORDS_SHORT_QUERY = 
+    private static final String GET_RECORDS_SHORT_QUERY = 
 			"SELECT first_name, patronymic, surname, birthdate, " +
 			"email, organization, country, city, street, house_number, apartment_number, post_code " +
 			"FROM (jdee.contact JOIN jdee.address) JOIN jdee.workplace " +
 			"WHERE contact.address_id = address.id AND contact.workplace_id = workplace.id LIMIT ?, ?;";
 	
-	private static final String GET_RECORD_QUERY = "SELECT * " +
+    private static final String GET_RECORD_QUERY = "SELECT * " +
 			"FROM (jdee.contact JOIN jdee.address) JOIN jdee.workplace " +
 			"WHERE contact.address_id = address.id AND contact.workplace_id = workplace.id AND email = ?";
 	
-	private static final String DELETE_RECORD = "DELETE FROM jdee.contact WHERE email = ?"; 
+    private static final String GET_CONTACT_PHONES = "SELECT * FROM jdee.contact_phone " +
+	                "WHERE contact_id = (SELECT id FROM jdee.contact WHERE email = ?);";
+	
+    private static final String GET_ATTACHMENTS = "SELECT * FROM jdee.attachment " +
+	                "WHERE contact_id = (SELECT id FROM jdee.contact WHERE email = ?);";
+    	
+    private static final String DELETE_RECORD = "DELETE FROM jdee.attachment " +
+                        "WHERE contact_id = (SELECT id FROM jdee.contact WHERE email = ?); " +
+                        "DELETE FROM jdee.contact_phone " +
+                        "WHERE contact_id = (SELECT id FROM jdee.contact WHERE email = ?); " +
+                        "DELETE FROM jdee.contact WHERE email = ?;"; 
         
     public PhoneRecordDAOImpl() {
 
@@ -158,6 +168,8 @@ public class PhoneRecordDAOImpl implements PhoneRecordDAO {
 			connection = StorageProvider.INSTANCE.getConnection();
 			statement = connection.prepareStatement(DELETE_RECORD);
 			statement.setString(1, mail);
+			statement.setString(2, mail);
+			statement.setString(3, mail);
 			statement.execute();			
 		} catch (SQLException e) {
 			LOGGER.error("Failed to obtain connection:", e);

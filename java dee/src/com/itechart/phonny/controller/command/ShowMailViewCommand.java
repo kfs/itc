@@ -6,24 +6,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.itechart.phonny.controller.RequestPage;
 
 
-public class NotFoundCommand extends AbstractCommand {
-	
-	public NotFoundCommand() {
-		
-		super();
-	}
+public class ShowMailViewCommand extends AbstractCommand {
 
     @Override
     public void proccess(HttpServletRequest request,
             HttpServletResponse response) {
 
-    	LOGGER.debug("Forwarded to >>404_NOT_FOUND command.");
+    	LOGGER.debug("Requested >>ShowMailView command.");
     }
 
     @Override
     public String getPageURI() {
 
-        return RequestPage.NOT_FOUND_PAGE;
+        return RequestPage.SEND_MAIL_PAGE;
     }
 
 }

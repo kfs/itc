@@ -7,24 +7,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.itechart.phonny.controller.command.Command;
 import com.itechart.phonny.controller.command.CommandFactory;
 
 public class Dispatcher {
     
-    private static final Logger LOGGER = Logger.getLogger(Dispatcher.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Dispatcher.class);
 
     public void dispatch(HttpServletRequest request, HttpServletResponse response) {
         
         String requestedURI = request.getRequestURI();
+        LOGGER.debug("Page requested:\n {}", requestedURI);
         Command command = CommandFactory.getCommand(requestedURI);
-        command.proccess(request, response);
-        
-        // TODO: remove and provide log filter
-        System.out.println(request.getRequestURI() + "\n---------------------------");
-        
+        command.proccess(request, response);       
         forward(command.getPageURI(), request, response);
     }
     
@@ -35,7 +33,7 @@ public class Dispatcher {
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
-            LOGGER.error(e);
+            LOGGER.error(e.getMessage(), e);
         }
     }
 }

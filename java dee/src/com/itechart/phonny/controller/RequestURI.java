@@ -13,6 +13,8 @@ public final class RequestURI {
     public static final String SEARCH           = "/java_dee/pages/search";
 
     public static final String SEARCH_COMPLETED = "/java_dee/pages/search-completed";
+    
+    public static final String UPDATE 			= "/java_dee/pages/proccess";
 
     public static final String NOT_FOUND        = null;
 

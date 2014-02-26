@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.itechart.phonny.controller.RequestPage;
 
 
-public class NotFoundCommand extends AbstractCommand {
+public class ShowSearchViewCommand extends AbstractCommand {
 	
-	public NotFoundCommand() {
-		
+	public ShowSearchViewCommand() {
+
 		super();
 	}
 
@@ -17,13 +17,13 @@ public class NotFoundCommand extends AbstractCommand {
     public void proccess(HttpServletRequest request,
             HttpServletResponse response) {
 
-    	LOGGER.debug("Forwarded to >>404_NOT_FOUND command.");
+    	LOGGER.debug("Requested >>ShowSearchView command.");
     }
 
     @Override
     public String getPageURI() {
 
-        return RequestPage.NOT_FOUND_PAGE;
+        return RequestPage.SEARCH_PAGE;
     }
 
 }

@@ -23,19 +23,11 @@ public class FrontController extends HttpServlet {
     public static final Logger LOGGER = Logger.getLogger(FrontController.class);
     
     @Override
-    protected void doGet(final HttpServletRequest req,
-            final HttpServletResponse resp) throws ServletException,
-            IOException {
+    protected void service(HttpServletRequest req, HttpServletResponse resp)
+    		throws ServletException, IOException {
 
-        Dispatcher dispatcher = new Dispatcher();
+    	Dispatcher dispatcher = new Dispatcher();
         dispatcher.dispatch(req, resp);
     }
-
-    @Override
-    protected void doPost(final HttpServletRequest req,
-            final HttpServletResponse resp) throws ServletException,
-            IOException {
-
-        super.doPost(req, resp);
-    }
+    
 }

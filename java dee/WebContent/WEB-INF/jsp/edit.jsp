@@ -19,247 +19,281 @@
         	<a href="index" class="btn">Вернуться к списку</a>
         </div>
         <div class = "well">
-            <form action="/proccess" method="post">
+            <form action='proccess<c:if test="${requestScope.recordId != null}">?record=<c:out value="${requestScope.recordId}"></c:out></c:if>' method="post">
 	            <c:choose>
 	                <c:when test="${requestScope.editableRecord != null}">
-	                    <img src="resources/img/no-avatar.png" class="img-photo pull-left" alt="Изменить...">
-		                <label>
-		                    <span class="search-tip">Фамилия*: </span>
-		                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getSurname()}"></c:out>' placeholder="Фамилия">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Имя*: </span>
-		                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getFirstName()}"></c:out>' placeholder="Имя">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Отчество: </span>
-		                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getPatronymic()}"></c:out>' placeholder="Отчество">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Дата рождения: </span>
-		                    <input type="date" class="form-control input-small">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Пол: </span>
-		                    <select name="gender" class="select-small">
-		                        <option value="gender-not-selected">Выберите</option>
-		                        <option value="gender-male">Мужской</option>
-		                        <option value="gender-female">Женский</option>
-		                    </select>
-		                </label>
-		                <label>
-		                    <span class="search-tip">Семейное положение: </span>
-		                    <select name="marital" class="select-small">
-		                        <option value="marital-not-selected">Выберите</option>
-		                        <option value="marital-yes">Состоит в браке</option>
-		                        <option value="marital-no">Не состоит в браке</option>
-		                    </select>
-		                </label>
-		                <label>
-		                    <span class="search-tip">Гражданство: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Гражданство">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Веб-сайт: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Веб-сайт">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Email: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Email">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Место работы: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Место работы">
-		                </label>
-		                <span class="search-tip">Адрес </span>
-		                <label>
-		                    <span class="search-tip">Страна: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Страна">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Город: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Город">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Улица: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Улица">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Номер дома: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Номер дома">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Номер квартиры: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Номер квартиры">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Индекс: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Индекс">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Email: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Email">
-		                </label>
-		                <span class="search-tip">Список контактных телефонов: </span>
-		                <div class="pull-right">
-		                    <a class="btn" href="#!" onclick="show('phone-list-container', 'modal-background')">Создать</a>
-		                    <a class="btn btn-danger" href="#!" onclick="easyOff('phone-list-container')">Удалить</a>
+	                    <div class="panel panel-default">
+                            <div class="panel-heading"><span class="search-tip">Личная информация: </span></div>
+                            <div class="panel-body">
+			                    <img src="resources/img/no-avatar.png" class="img-photo pull-left" alt="Изменить...">
+				                <label>
+				                    <span class="search-tip">Фамилия*: </span>
+				                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getSurname()}"></c:out>' placeholder="Фамилия">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Имя*: </span>
+				                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getFirstName()}"></c:out>' placeholder="Имя">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Отчество*: </span>
+				                    <input type="text" class="form-control input-small" value='<c:out value="${requestScope.editableRecord.getPatronymic()}"></c:out>' placeholder="Отчество">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Дата рождения: </span>
+				                    <input type="date" class="form-control input-small">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Пол: </span>
+				                    <select name="gender" class="select-small">
+				                        <option value="gender-not-selected">Выберите</option>
+				                        <option value="gender-male">Мужской</option>
+				                        <option value="gender-female">Женский</option>
+				                    </select>
+				                </label>
+				                <label>
+				                    <span class="search-tip">Семейное положение: </span>
+				                    <select name="marital" class="select-small">
+				                        <option value="marital-not-selected">Выберите</option>
+				                        <option value="marital-yes">Состоит в браке</option>
+				                        <option value="marital-no">Не состоит в браке</option>
+				                    </select>
+				                </label>
+				                <label>
+				                    <span class="search-tip">Гражданство: </span>
+				                    <input type="text" class="form-control input-small" placeholder="Гражданство">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Веб-сайт: </span>
+				                    <input type="text" class="form-control input-small" placeholder="Веб-сайт">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Email*: </span>
+				                    <input type="text" class="form-control input-small" placeholder="Email">
+				                </label>
+				                <label>
+				                    <span class="search-tip">Место работы: </span>
+				                    <input type="text" class="form-control input-small" placeholder="Место работы">
+				                </label>
+				            </div>
+				        </div>
+		                <div class="panel panel-default">
+						    <div class="panel-heading"><span class="search-tip">Адрес* </span></div>
+						    <div class="panel-body">
+						    <label>
+	                            <span class="search-tip">Страна: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Страна">
+	                        </label>
+	                        <label>
+	                            <span class="search-tip">Город: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Город">
+	                        </label>
+	                        <label>
+	                            <span class="search-tip">Улица: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Улица">
+	                        </label>
+	                        <label>
+	                            <span class="search-tip">Номер дома: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Номер дома">
+	                        </label>
+	                        <label>
+	                            <span class="search-tip">Номер квартиры: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Номер квартиры">
+	                        </label>
+	                        <label>
+	                            <span class="search-tip">Индекс: </span>
+	                            <input type="text" class="form-control input-small" placeholder="Индекс">
+	                        </label>
+						    </div>
+						</div>		                
+		                <div class="panel panel-default">
+                            <div class="panel-heading"><span class="search-tip">Список контактных телефонов: </span></div>
+                            <div class="panel-body">
+				                <div class="pull-right">
+				                    <a class="btn" href="#!" onclick="show('phone-list-container', 'modal-background')">Создать</a>
+				                    <a class="btn btn-danger" href="#!" onclick="easyOff('phone-list-container')">Удалить</a>
+				                </div>
+				                <table class="table">
+				                    <thead>
+				                        <tr>
+				                            <th></th>
+				                            <th>Номер</th>
+				                            <th>Описание</th>
+				                            <th>Комментарий</th>
+				                        </tr>
+				                    </thead>
+				                    <tbody>
+				                        <tr>
+				                            <td><input type="checkbox" checked="checked"></td>
+				                            <td>+375 29 1234567</td>
+				                            <td>Мобильный</td>
+				                            <td>-</td>
+				                        </tr>
+				                    </tbody>
+				                </table>
+		                    </div>
 		                </div>
-		                <table class="table">
-		                    <thead>
-		                        <tr>
-		                            <th></th>
-		                            <th>Номер</th>
-		                            <th>Описание</th>
-		                            <th>Комментарий</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td><input type="checkbox" checked="checked"></td>
-		                            <td>+375 29 1234567</td>
-		                            <td>Мобильный</td>
-		                            <td>-</td>
-		                        </tr>
-		                    </tbody>
-		                </table>
-		                <span class="search-tip">Список присоединений: </span>
-		                <div class="pull-right">
-		                    <a class="btn" href="#!" onclick="show('attachment-container', 'modal-background')">Создать</a>
-		                    <a class="btn btn-danger" href="#!" onclick="easyOff('attachment-container')">Удалить</a>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <span class="search-tip">Список присоединений: </span>
+		                    </div>
+                            <div class="panel-body">
+				                <div class="pull-right">
+				                    <a class="btn" href="#!" onclick="show('attachment-container', 'modal-background')">Создать</a>
+				                    <a class="btn btn-danger" href="#!" onclick="easyOff('attachment-container')">Удалить</a>
+				                </div>
+				                <table class="table">
+				                    <thead>
+				                        <tr>
+				                            <th></th>
+				                            <th>Имя файла</th>
+				                            <th>Дата загрузки</th>
+				                            <th>Комментарий</th>
+				                        </tr>
+				                    </thead>
+				                    <tbody>
+				                        <tr>
+				                            <td><input type="checkbox" checked="checked"></td>
+				                            <td>Картинка1.jpg</td>
+				                            <td>12-01-2001</td>
+				                            <td>-</td>
+				                        </tr>
+				                    </tbody>
+				                </table>
+				            </div>
 		                </div>
-		                <table class="table">
-		                    <thead>
-		                        <tr>
-		                            <th></th>
-		                            <th>Имя файла</th>
-		                            <th>Дата загрузки</th>
-		                            <th>Комментарий</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td><input type="checkbox" checked="checked"></td>
-		                            <td>Картинка1.jpg</td>
-		                            <td>12-01-2001</td>
-		                            <td>-</td>
-		                        </tr>
-		                    </tbody>
-		                </table>
 	                </c:when>
 	                <c:otherwise>
-	                    <img src="resources/img/no-avatar.png" class="img-photo pull-left" alt="Изменить...">
-		                <label>
-		                    <span class="search-tip">Фамилия*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Фамилия">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Имя*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Имя">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Отчество*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Отчество">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Дата рождения: </span>
-		                    <input type="date" class="form-control input-small">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Пол: </span>
-		                    <select name="gender" class="select-small">
-		                        <option value="gender-not-selected">Выберите</option>
-		                        <option value="gender-male">Мужской</option>
-		                        <option value="gender-female">Женский</option>
-		                    </select>
-		                </label>
-		                <label>
-		                    <span class="search-tip">Семейное положение: </span>
-		                    <select name="marital" class="select-small">
-		                        <option value="marital-not-selected">Выберите</option>
-		                        <option value="marital-yes">Состоит в браке</option>
-		                        <option value="marital-no">Не состоит в браке</option>
-		                    </select>
-		                </label>
-		                <label>
-		                    <span class="search-tip">Гражданство: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Гражданство">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Веб-сайт: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Веб-сайт">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Email: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Email">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Место работы: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Место работы">
-		                </label>
-		                <span class="search-tip">Адрес* </span>
-		                <label>
-		                    <span class="search-tip">Страна*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Страна">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Город*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Город">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Улица*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Улица">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Номер дома*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Номер дома">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Номер квартиры*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Номер квартиры">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Индекс*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Индекс">
-		                </label>
-		                <label>
-		                    <span class="search-tip">Email*: </span>
-		                    <input type="text" class="form-control input-small" placeholder="Email">
-		                </label>
-		                <span class="search-tip">Список контактных телефонов: </span>
-		                <div class="pull-right">
-		                    <a class="btn" href="#!" onclick="show('phone-list-container', 'modal-background')">Создать</a>
-		                    <a class="btn btn-danger" href="#!" onclick="easyOff('phone-list-container')">Удалить</a>
-		                </div>
-		                <table class="table">
-		                    <thead>
-		                        <tr>
-		                            <th></th>
-		                            <th>Номер</th>
-		                            <th>Описание</th>
-		                            <th>Комментарий</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                    </tbody>
-		                </table>
-		                <span class="search-tip">Список присоединений: </span>
-		                <div class="pull-right">
-		                    <a class="btn" href="#!" onclick="show('attachment-container', 'modal-background')">Создать</a>
-		                    <a class="btn btn-danger" href="#!" onclick="easyOff('attachment-container')">Удалить</a>
-		                </div>
-		                <table class="table">
-		                    <thead>
-		                        <tr>
-		                            <th></th>
-		                            <th>Имя файла</th>
-		                            <th>Дата загрузки</th>
-		                            <th>Комментарий</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                    </tbody>
-		                </table>
+	                    <div class="panel panel-default">
+                            <div class="panel-heading"><span class="search-tip">Личная информация: </span></div>
+                            <div class="panel-body">
+                                <img src="resources/img/no-avatar.png" class="img-photo pull-left" alt="Изменить...">
+                                <label>
+                                    <span class="search-tip">Фамилия*: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Фамилия">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Имя*: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Имя">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Отчество*: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Отчество">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Дата рождения: </span>
+                                    <input type="date" class="form-control input-small">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Пол: </span>
+                                    <select name="gender" class="select-small">
+                                        <option value="gender-not-selected">Выберите</option>
+                                        <option value="gender-male">Мужской</option>
+                                        <option value="gender-female">Женский</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span class="search-tip">Семейное положение: </span>
+                                    <select name="marital" class="select-small">
+                                        <option value="marital-not-selected">Выберите</option>
+                                        <option value="marital-yes">Состоит в браке</option>
+                                        <option value="marital-no">Не состоит в браке</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span class="search-tip">Гражданство: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Гражданство">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Веб-сайт: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Веб-сайт">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Email*: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Email">
+                                </label>
+                                <label>
+                                    <span class="search-tip">Место работы: </span>
+                                    <input type="text" class="form-control input-small" placeholder="Место работы">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><span class="search-tip">Адрес* </span></div>
+                            <div class="panel-body">
+                            <label>
+                                <span class="search-tip">Страна: </span>
+                                <input type="text" class="form-control input-small" placeholder="Страна">
+                            </label>
+                            <label>
+                                <span class="search-tip">Город: </span>
+                                <input type="text" class="form-control input-small" placeholder="Город">
+                            </label>
+                            <label>
+                                <span class="search-tip">Улица: </span>
+                                <input type="text" class="form-control input-small" placeholder="Улица">
+                            </label>
+                            <label>
+                                <span class="search-tip">Номер дома: </span>
+                                <input type="text" class="form-control input-small" placeholder="Номер дома">
+                            </label>
+                            <label>
+                                <span class="search-tip">Номер квартиры: </span>
+                                <input type="text" class="form-control input-small" placeholder="Номер квартиры">
+                            </label>
+                            <label>
+                                <span class="search-tip">Индекс: </span>
+                                <input type="text" class="form-control input-small" placeholder="Индекс">
+                            </label>
+                            </div>
+                        </div>                      
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><span class="search-tip">Список контактных телефонов: </span></div>
+                            <div class="panel-body">
+                                <div class="pull-right">
+                                    <a class="btn" href="#!" onclick="show('phone-list-container', 'modal-background')">Создать</a>
+                                    <a class="btn btn-danger" href="#!" onclick="easyOff('phone-list-container')">Удалить</a>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Номер</th>
+                                            <th>Описание</th>
+                                            <th>Комментарий</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="search-tip">Список присоединений: </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="pull-right">
+                                    <a class="btn" href="#!" onclick="show('attachment-container', 'modal-background')">Создать</a>
+                                    <a class="btn btn-danger" href="#!" onclick="easyOff('attachment-container')">Удалить</a>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Имя файла</th>
+                                            <th>Дата загрузки</th>
+                                            <th>Комментарий</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 	                </c:otherwise>
 	            </c:choose>
                 <button class="btn btn-success" type="submit">Сохранить</button>

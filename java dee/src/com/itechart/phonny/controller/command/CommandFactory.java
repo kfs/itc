@@ -12,13 +12,14 @@ public class CommandFactory {
     static {
         
         commands = new HashMap<String, Command>();
-        Command indexCommand = new AllRecordsCommand();
+        AbstractCommand indexCommand = new AllRecordsCommand();
         commands.put(RequestURI.INDEX_DEFAULT, indexCommand);
         commands.put(RequestURI.INDEX, indexCommand);
-        commands.put(RequestURI.CREATE, new CreateRecordCommand());
-        commands.put(RequestURI.SEARCH, new SearchCommand());
-        commands.put(RequestURI.SEARCH_COMPLETED, new SearchCompletedCommand());
-        commands.put(RequestURI.SEND_MAIL, new SendMailCommand());
+        commands.put(RequestURI.CREATE, new EditRecordCommand());
+        commands.put(RequestURI.SEARCH, new ShowSearchViewCommand());
+        commands.put(RequestURI.SEARCH_COMPLETED, new SearchCommand());
+        commands.put(RequestURI.SEND_MAIL, new ShowMailViewCommand());
+        commands.put(RequestURI.UPDATE, new UpdateRecordCommand());
     }
     
     private CommandFactory() {

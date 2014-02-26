@@ -14,10 +14,10 @@
             <h2>Справочник контактов</h2>
         </div>
         <div class="well">
-            <a href="/java_dee/create" class="btn btn-success">Новый контакт</a>
+            <a href="create" class="btn btn-success">Новый контакт</a>
             <a href="#!" class="btn btn-danger">Удалить</a>
-            <a href="/java_dee/send-mail" class="btn">Отправить письмо</a>
-            <a href="/java_dee/search" class="btn">Поиск</a>
+            <a href="send-mail" class="btn">Отправить письмо</a>
+            <a href="search" class="btn">Поиск</a>
         </div>
         <div class = "well vspace">
             <table class="table">

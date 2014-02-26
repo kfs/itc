@@ -12,13 +12,18 @@ import com.itechart.phonny.model.dao.StorageLocator;
 import com.itechart.phonny.model.entity.PhoneRecord;
 
 
-public class AllRecordsCommand implements Command {
+public class AllRecordsCommand extends AbstractCommand {
+	
+	public AllRecordsCommand() {
+		
+		super();
+	}
 
     @Override
     public void proccess(HttpServletRequest request,
             HttpServletResponse response) {
 
-        System.out.println("ALL_RECORDS");
+    	LOGGER.info("Requested >>ShowAllRecords command.");
         loadRequestedData(request);
     }
 
@@ -26,8 +31,9 @@ public class AllRecordsCommand implements Command {
 
         StorageLocator locator = StorageLocator.INSTANCE;
         PhoneRecordDAO dao = (PhoneRecordDAO) locator.getDAO(PhoneRecordDAO.class);
+        // TODO: provide pagination
         List<PhoneRecord> records = dao.getRecords(1, 10);
-        request.setAttribute("allRecords", records);
+        request.setAttribute(RequestAttributes.RECORD_COLLECTION, records);
         // TODO: add page-output support
         createPageConfig(request);
     }
@@ -37,7 +43,7 @@ public class AllRecordsCommand implements Command {
         PageConfig config = new PageConfig();
         config.setHasNext(false);
         config.setHasPrevious(false);
-        request.setAttribute("pageConfig", config);
+        request.setAttribute(RequestAttributes.PAGINATION_CONFIG, config);
     }
 
     @Override

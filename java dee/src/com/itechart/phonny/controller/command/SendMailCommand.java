@@ -5,20 +5,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itechart.phonny.controller.RequestPage;
 
+public class SendMailCommand extends AbstractCommand {
+	
+	public SendMailCommand() {
 
-public class SendMailCommand implements Command {
+		super();
+	}
 
-    @Override
-    public void proccess(HttpServletRequest request,
-            HttpServletResponse response) {
+	@Override
+	public void proccess(HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	}
 
-        System.out.println("SEND_MAIL");
-    }
+	@Override
+	public String getPageURI() {
 
-    @Override
-    public String getPageURI() {
-
-        return RequestPage.SEND_MAIL_PAGE;
-    }
+		return RequestPage.INDEX_PAGE;
+	}
 
 }

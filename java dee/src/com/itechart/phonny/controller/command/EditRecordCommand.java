@@ -9,14 +9,19 @@ import com.itechart.phonny.model.dao.StorageLocator;
 import com.itechart.phonny.model.entity.PhoneRecord;
 
 
-public class CreateRecordCommand implements Command {
+public class EditRecordCommand extends AbstractCommand {
+	
+	public EditRecordCommand() {
+
+		super();
+	}
 
     @Override
     public void proccess(HttpServletRequest request,
             HttpServletResponse response) {
 
-        System.out.println("CREATE + " + request.getParameter("record"));
-        String recordEmail = (String) request.getParameter("record");
+        LOGGER.info("Requested >>Edit&UpdateView command.");
+        String recordEmail = (String) request.getParameter(RequestParameters.RECORD_ID);
         if (recordEmail != null) {
             loadRequestedData(request, response);
 		}
@@ -25,11 +30,12 @@ public class CreateRecordCommand implements Command {
     private void loadRequestedData(HttpServletRequest request,
 			HttpServletResponse response) {
 
-    	String recordEmail = (String) request.getParameter("record");    	
+    	String recordEmail = (String) request.getParameter(RequestParameters.RECORD_ID);    	
     	StorageLocator locator = StorageLocator.INSTANCE;
         PhoneRecordDAO dao = (PhoneRecordDAO) locator.getDAO(PhoneRecordDAO.class);
         PhoneRecord record = dao.getRecord(recordEmail);
-        request.setAttribute("editableRecord", record);
+        request.setAttribute(RequestAttributes.RECORD, record);
+        request.setAttribute(RequestAttributes.RECORD_ID, recordEmail);
 	}
 
 	@Override
